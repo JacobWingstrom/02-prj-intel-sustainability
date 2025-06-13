@@ -42,6 +42,7 @@ section {
   overflow-x: auto; /* Allows horizontal scrolling if needed */
   gap: 20px; /* Space between cards */
   padding: 20px 0; /* Space above and below the timeline */
+  scroll-snap-type: x mandatory; /* Enable horizontal scroll snapping */
 }
 
 h2 {
@@ -63,6 +64,8 @@ section > div {
   text-align: center;
   position: relative; /* Needed for absolute positioning of the paragraph */
   overflow: hidden;   /* Make sure absolutely positioned elements stay inside the card */
+  scroll-snap-align: start; /* Snap each card to the start of the scroll area */
+  transition: transform 0.25s, box-shadow 0.25s; /* Smooth transition for scaling, moving, and shadow */
 }
 
 /* Make images inside cards fit nicely and show the whole image */
@@ -107,6 +110,12 @@ section > div:hover p {
   border-radius: 12px; /* Rounded corners on hover */
   box-shadow: 0 4px 16px rgba(0,0,0,0.18); /* Add a shadow on hover */
   top: -16px
+}
+
+/* Add a shadow to the card when hovering for a shadow effect */
+section > div:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.22); /* Stronger shadow on hover */
+  transform: scale(0.97) translateY(-6px); /* Slightly smaller and moves up a bit */
 }
 
 /* Style for the text under the cards */
