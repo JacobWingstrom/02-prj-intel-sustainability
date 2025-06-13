@@ -1,1 +1,144 @@
 /* Add your CSS here */
+
+/* This styles the header with a blue gradient background and an SVG image */
+header {
+  /* Set the SVG as the background image */
+  background-image: url('img/Intel Banner.svg');
+  background-size: cover;      /* Make the image cover the whole header */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat;/* Do not repeat the image */
+  padding: 30px 0;             /* Adds space above and below the header */
+  text-align: center;          /* Centers the content inside the header */
+  width: 100vw;                /* Make the header as wide as the whole screen */
+  position: relative;          /* So it stays at the top */
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* This centers the main content and limits its width */
+body {
+  max-width: 700px; /* Sets a maximum width for the page */
+  margin: 0 auto;   /* Centers the page horizontally */
+  background: #f5f7fa; /* Light background color for contrast */
+  font-size: 15px; /* Slightly smaller than the default 16px */
+}
+
+/* Make the text and logo easier to see on the blue background */
+header h1,
+header p {
+  color: white;
+}
+
+header img {
+  width: 120px; /* Makes the logo smaller */
+  margin-bottom: 15px;
+}
+
+/* Timeline section uses flexbox to show cards in a row */
+section {
+  display: flex; /* Use flexbox to arrange children in a row */
+  overflow-x: auto; /* Allows horizontal scrolling if needed */
+  gap: 20px; /* Space between cards */
+  padding: 20px 0; /* Space above and below the timeline */
+}
+
+h2 {
+  text-align: center; /* Center the section title */
+  color: #014080; /* Dark blue color for the title */
+  margin-bottom: 20px; /* Space below the title */
+  font-size: 1.3em; /* About 19.5px */
+}
+
+/* Each card in the timeline */
+section > div {
+  background: white;
+  border-radius: 0; /* No rounded corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  min-width: 220px;
+  max-width: 250px;
+  flex: 0 0 auto;
+  padding: 16px;
+  text-align: center;
+  position: relative; /* Needed for absolute positioning of the paragraph */
+  overflow: hidden;   /* Make sure absolutely positioned elements stay inside the card */
+}
+
+/* Make images inside cards fit nicely and show the whole image */
+/* The images are 250x100, so we set a fixed height and use object-fit to show the whole image */
+section > div img {
+  width: 100%;           /* Make the image as wide as the card */
+  height: 100px;         /* Set the height to match the image's natural height */
+  object-fit: contain;   /* Show the whole image, even if there is extra space */
+  border-radius: 0;    /* No rounded corners for images */
+  margin-bottom: 10px;   /* Space below the image */
+  display: block;        /* Remove extra space below the image */
+}
+
+/* Hide the paragraph by default and style it to appear over the whole card */
+section > div p {
+  display: none; /* Hide the paragraph at first */
+  position: absolute; /* Position it over the card */
+  top: -16px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 51, 102, 0.9); /* Dark blue with some transparency */
+  color: #fff;
+  padding: 20px 10px;
+  border-radius: 0; /* No rounded corners by default */
+  box-sizing: border-box;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.4s, border-radius 0.3s, box-shadow 0.3s; /* Smooth transitions */
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* When you hover over the card, round the popup corners and add a shadow */
+section > div:hover p {
+  display: flex;
+  opacity: 1;
+  border-radius: 12px; /* Rounded corners on hover */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18); /* Add a shadow on hover */
+  top: -16px
+}
+
+/* Style for the text under the cards */
+body > p {
+  text-align: center;         /* Center the text */
+  color: #888888;             /* Slightly darker light gray color */
+  margin-top: 20px;           /* Space above the text */
+  font-size: 1em;           /* Slightly larger text */
+}
+
+/* Use Montserrat for headings and Open Sans for body text */
+
+/* Headings use Montserrat, which is bold and modern */
+h1, h2, h3 {
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+/* Body text uses Open Sans, which is clean and easy to read */
+body, p {
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+/* Make the timeline cards stack in a column on small screens */
+@media (max-width: 600px) {
+  section {
+    flex-direction: column; /* Stack cards vertically */
+    gap: 16px;              /* Space between cards */
+    overflow-x: visible;    /* No horizontal scroll needed */
+  }
+
+  section > div {
+    min-width: 0;           /* Let cards shrink to fit */
+    max-width: 100%;        /* Cards take full width */
+  }
+}
